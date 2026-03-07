@@ -9,6 +9,18 @@ docker build -t embed .
 docker run -it -v $(pwd):/workspace --rm embed
 arm-none-eabi-gcc --version # 動くかを確認
 ```
+- elf2uf2
+```
+git clone https://github.com/rej696/elf2uf2.git
+make
+```
+- rp2024js(for emulator)
+```
+git clone git@github.com:wokwi/rp2040js.git
+cd rp2040js
+npm install
+# npm run start -- --image ../kernel.uf2で使う
+```
 
 ## Explain
 - 全体
@@ -52,3 +64,8 @@ MEMORY {
 | PWM    | モーター制御      |
 - ペリフェラルのレジスタは32ビットのサイズでメモリ空間にmapされてるのでpointerへの書き込みなどでアクセスを行う
 - [RP2040のdata sheet](https://akizukidenshi.com/goodsaffix/rp2040-datasheet.pdf)の2.3.1.7にペリフェラルのレジスタ関連の情報はある
+
+- sections
+  - bss (Block Storage Section): 初期値のないグローバル変数, デフォルトを0で初期化する
+  - data: 初期値のあるグローバル変数
+  - rodata (Read Only Data): グローバル変数の初期値

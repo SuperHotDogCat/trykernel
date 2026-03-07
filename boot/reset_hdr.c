@@ -81,6 +81,7 @@ static void init_clock(void)
     while(in_w(CLK_REF+CLK_x_SELECTED) != 0x1);
 
     /* PLLの設定 */
+    // 周波数を変更する
     init_pll(PLL_SYS_BASE, 1, 1500 * MHz, 6, 2);    // PLL SYS 125MHz
     init_pll(PLL_USB_BASE, 1, 480 * MHz, 5, 2);     // PLL USB 48MHz
 
@@ -168,6 +169,7 @@ static void init_section(void)
     }
 
     /* bssセクションの初期化 （0クリア） */
+    // bss sectionにあるデータを0初期化するという意
     for(i = ((int)&__bss_end - (int)&__bss_start)/sizeof(int); i > 0 ; i--) {
         *top++ = 0;
     }

@@ -1,14 +1,15 @@
 CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 
-CFLAGS = -mcpu=cortex-m0 -mthumb -O0 -ffreestanding -Iinclude
+CFLAGS = -mcpu=cortex-m0plus -mthumb -O0 -ffreestanding -Iinclude
 LDFLAGS = -T linker/pico_memmap.ld -nostdlib -lgcc
 
 SRC = \
 application/main.c \
 boot/boot2.c \
 boot/reset_hdr.c \
-boot/vector_tbl.c
+boot/vector_tbl.c \
+kernel/syslib.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,4 +25,4 @@ kernel.bin: kernel.elf
 	$(OBJCOPY) -O binary $< $@
 
 clean:
-	rm *.bin *.elf application/*.o boot/*.o
+	rm *.bin *.elf application/*.o boot/*.o *.uf2

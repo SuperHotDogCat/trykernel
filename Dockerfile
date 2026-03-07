@@ -7,7 +7,8 @@ RUN apt-get update && \
         xz-utils \
         tar \
         make \
-        git
+        git \
+        sudo
 
 # xPack arm-none-eabi-gcc をダウンロード
 RUN mkdir -p /opt/toolchains && \
