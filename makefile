@@ -18,6 +18,9 @@ all: kernel.bin
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+%.S: %.c
+	$(CC) $(CFLAGS) -S $< -o $@
+
 kernel.elf: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $@
 
@@ -25,4 +28,4 @@ kernel.bin: kernel.elf
 	$(OBJCOPY) -O binary $< $@
 
 clean:
-	rm *.bin *.elf application/*.o boot/*.o *.uf2
+	rm *.bin *.elf application/*.o boot/*.o *.uf2 application/*.S boot/*.S
