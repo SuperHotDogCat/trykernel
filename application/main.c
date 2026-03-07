@@ -20,6 +20,12 @@ int main(void)
 
     while(1) {
         out_w(GPIO_OUT_XOR, (1<<25));   /* LEDの表示反転 */
+        if (in_w(GPIO_OUT) & (1 << 25)){
+            // LED以外でのdebug, serialに送る
+            tm_putstring("1\n");
+        } else {
+            tm_putstring("0\n");
+        }
         delay_ms(500);                  /* 0.5秒待ち */
     }
     return 0;

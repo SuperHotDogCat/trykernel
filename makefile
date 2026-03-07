@@ -13,7 +13,7 @@ kernel/syslib.c
 
 OBJ = $(SRC:.c=.o)
 
-all: kernel.bin
+all: kernel.uf2
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -26,6 +26,9 @@ kernel.elf: $(OBJ)
 
 kernel.bin: kernel.elf
 	$(OBJCOPY) -O binary $< $@
+
+kernel.uf2: kernel.elf
+	./elf2uf2/elf2uf2 $< $@
 
 clean:
 	rm *.bin *.elf application/*.o boot/*.o *.uf2 application/*.S boot/*.S
