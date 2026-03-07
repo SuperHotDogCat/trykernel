@@ -1,4 +1,7 @@
 # trykernel
+## What is this?
+- Interface 2023年7月号のRTOS trykernelの開発とそのメモ
+- Interfaceで紹介していること以外にもelf2uf2の使用やrp2040のemulatorとかも用いて開発してみている
 ## Detail
 - file単位でhardware依存部分とそうでない部分を分ける
 
@@ -69,3 +72,13 @@ MEMORY {
   - bss (Block Storage Section): 初期値のないグローバル変数, デフォルトを0で初期化する
   - data: 初期値のあるグローバル変数
   - rodata (Read Only Data): グローバル変数の初期値
+
+- attributeの種類
+
+| attribute         | 意味        |
+| ----------------- | --------- |
+| `section("name")` | セクション指定(.textとか以外に自分で作れる)   |
+| `aligned(n)`      | アラインメント   |
+| `packed`          | padding削除 |
+| `weak`            | 弱シンボル     |
+| `noreturn`        | returnしない |
