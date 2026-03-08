@@ -9,13 +9,19 @@ application/main.c \
 boot/boot2.c \
 boot/reset_hdr.c \
 boot/vector_tbl.c \
-kernel/syslib.c
+kernel/syslib.c \
+kernel/context.c \
 
-OBJ = $(SRC:.c=.o)
+ASM_SRC = \
+kernel/dispatch.S
+OBJ = $(SRC:.c=.o) $(ASM_SRC:.S=.o)
 
 all: kernel.uf2
 
 %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%.o: %.S
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %.S: %.c

@@ -83,6 +83,23 @@ MEMORY {
 | `weak`            | 弱シンボル     |
 | `noreturn`        | returnしない |
 
+- PendSVって何
+  - Pendable Service Call, あとで実行して欲しい例外
+  - CPUが暇になったら実行する例外のこと(優先度最低)
+  - context switchの実装で使う
+  - 他にも例外と使用用途の一覧はこちら
+
+| 例外         | 用途       |
+| ---------- | -------- |
+| NMI        | 非マスク割り込み |
+| HardFault  | 致命エラー    |
+| SVCall     | システムコール  |
+| **PendSV** | タスクスイッチ  |
+| SysTick    | OSタイマー   |
+
+- vector tbl
+  - 例外や割り込みが起きた時に実行する関数のアドレス一覧表
+
 ## 疑問点
 - めっちゃGPIOのmacroがあるけどout_wとxset_wとどう使い分けているのかぶっちゃけわからない
 ```
