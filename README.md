@@ -114,4 +114,5 @@ MEMORY {
 #define GPIO_OE_CLR             (SIO_BASE+0x28)
 #define GPIO_OE_XOR             (SIO_BASE+0x2C)
 ```
-- [2.1.2. Atomic Register Access](https://akizukidenshi.com/goodsaffix/rp2040-datasheet.pdf)の記述によるところだと, SIOはペリフェラルのoffsetでのAtomic Registerをサポートしていないとのこと
+- [2.1.2. Atomic Register Access](https://akizukidenshi.com/goodsaffix/rp2040-datasheet.pdf)の記述によるところだと, SIOはペリフェラルのoffsetでのAtomic Registerをbus levelではサポートしていないとのこと
+- [2.3.1.7 List of Registers](https://akizukidenshi.com/goodsaffix/rp2040-datasheet.pdf)にもあるように専用のSIO registersがあるのでそれを使う
