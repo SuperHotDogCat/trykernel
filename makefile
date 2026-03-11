@@ -5,12 +5,16 @@ CFLAGS = -mcpu=cortex-m0plus -mthumb -O0 -ffreestanding -Iinclude
 LDFLAGS = -T linker/pico_memmap.ld -nostdlib -lgcc
 
 SRC = \
-application/main.c \
+application/usermain.c \
 boot/boot2.c \
 boot/reset_hdr.c \
 boot/vector_tbl.c \
 kernel/syslib.c \
 kernel/context.c \
+kernel/task_manage.c \
+kernel/task_queue.c \
+kernel/inittsk.c \
+kernel/scheduler.c 
 
 ASM_SRC = \
 kernel/dispatch.S

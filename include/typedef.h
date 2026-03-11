@@ -44,7 +44,7 @@ typedef W                   TMO;    /* タイムアウト時間 */
 typedef UW                  RELTIM; /* 相対時間 */
 typedef W                   SZ;     /* サイズ */
 
-typedef void                (*FP)();    /* 引数なし・戻り値 void の関数へのポインタ */
+typedef void                (*FP)();    /* 関数ポインタ */
 
 #define NULL                (0)
 
